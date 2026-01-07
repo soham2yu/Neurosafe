@@ -1,0 +1,92 @@
+You are a senior frontend engineer.
+
+Create a React frontend using Vite for a product called "NeuroSafe AI".
+This is a DEMO MVP. No real authentication. No backend changes.
+
+TECH STACK:
+- React + Vite
+- React Router DOM
+- Plain CSS or minimal inline styles
+- Fetch API (no axios)
+- Environment variable for backend URL
+
+BACKEND:
+Base URL comes from environment variable:
+VITE_API_BASE_URL=https://neurosafe-backend.onrender.com
+
+API:
+POST /analyze
+Request body:
+{
+  "text": string,
+  "environment": string
+}
+
+REQUIREMENTS:
+
+1. ROUTES
+- "/"        → Landing page (product explanation + CTA)
+- "/login"   → Fake login (name + role select)
+- "/dashboard" → User dashboard
+- "/analyze" → Risk analysis page
+
+2. FAKE AUTH
+- On login, store user in localStorage as "neurosafe_user"
+- User object: { name, role }
+- No passwords
+- If no user, redirect to /login
+- Protect /dashboard and /analyze routes
+
+3. LANDING PAGE
+- Title: NeuroSafe AI
+- Subtitle: Decision-safety assistant for high-risk digital agreements
+- One short example scenario
+- Button: "Try Demo" → /login
+
+4. LOGIN PAGE
+- Input: Name
+- Select: Role (Student, Freelancer, Founder)
+- Button: Continue
+- On submit, save user to localStorage and redirect to /dashboard
+
+5. DASHBOARD
+- Welcome message with user name
+- Button: "Analyze New Agreement"
+- List of previous analyses from localStorage (if any)
+- Each analysis shows date + risk level
+
+6. ANALYZE PAGE
+- Textarea to paste agreement
+- Dropdown: Environment (Calm, Stressed, Overwhelmed)
+- Disable analyze button until text length > 50
+- Show loading state while calling backend
+- POST to /analyze using fetch
+- Save result to localStorage history
+- Display result clearly:
+  - Risk Level (Low / Medium / High)
+  - Bullet list of key risks
+  - Short warning message
+
+7. UX RULES
+- Clear loading indicators
+- Clear error handling
+- No console errors
+- Clean component separation
+- No giant files
+
+8. FILE STRUCTURE
+/src
+  /pages
+    Landing.jsx
+    Login.jsx
+    Dashboard.jsx
+    Analyze.jsx
+  /components
+    ProtectedRoute.jsx
+  App.jsx
+  main.jsx
+
+OUTPUT:
+- Working React app
+- Ready to run on Replit
+- Professional, demo-ready UI
